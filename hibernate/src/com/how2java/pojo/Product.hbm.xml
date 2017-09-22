@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+<!-- 在包com.how2java.pojo下 新建一个配置文件Product.hbm.xml， 用于映射Product类对应数据库中的product_表
+注: 文件名 Product.hbm.xml P一定要大写，要和类保持一致 -->	
+	
+<hibernate-mapping package="com.how2java.pojo">
+	<class name="Product" table="product_">
+		<id name="id" column="id">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="name"/>
+		<property name="price"/>
+	</class>
+</hibernate-mapping>
