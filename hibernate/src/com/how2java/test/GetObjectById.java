@@ -6,32 +6,23 @@ import org.hibernate.cfg.Configuration;
 
 import com.how2java.pojo.Product;
 
-/*创建一个Product对象，并通过hibernate把这个对象，插入到数据库中
+/*通过ID获取一个对象
+调用Session的get方法，根据id获取对象。 除了id之外，还需要传递一个类对象，毕竟需要知道获取的是哪个对象
 
-hibernate的基本步骤是：
-1. 获取SessionFactory 
-2. 通过SessionFactory 获取一个Session
-3. 在Session基础上开启一个事务
-4. 通过调用Session的save方法把对象保存到数据库
-5. 提交事务
-6. 关闭Session
-7. 关闭SessionFactory
-*/
-
-public class TestHibernate {
+除了使用get方法，还可以使用load获取对象。 请参考get和load的区别*/
+public class GetObjectById {
 	public static void main(String[] args){
 		SessionFactory sf=new Configuration().configure().buildSessionFactory();
 		
 		Session s=sf.openSession();
 		s.beginTransaction();
 		
-		Product p=new Product();
-		p.setName("iphone8");
-		p.setPrice(7000);
-		s.save(p);
+		Product p=(Product)s.get(Product.class, 6);//获取id为6的Product
+		System.out.println("id=6的产品名称名称是："+p.getName());
 		
 		s.getTransaction().commit();
 		s.close();
 		sf.close();
+		
 	}
 }

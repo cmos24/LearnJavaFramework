@@ -14,5 +14,6 @@
 		</id>
 		<property name="name"/>
 		<property name="price"/>
+		<many-to-one name="category" class="Category" column="cid"/>
 	</class>
 </hibernate-mapping>
