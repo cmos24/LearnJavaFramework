@@ -1,5 +1,8 @@
 package com.how2java.test;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -17,13 +20,16 @@ public class ManyToOne {
 		Session s=sf.openSession();
 		s.beginTransaction();
 		
+		//新增一个category
 		Category c=new Category();
-		c.setName("c2");
+		c.setName("c5");
 		s.save(c);
 		
-		Product p=(Product)s.get(Product.class, 5);//通过id获取对象
+		
+		Product p=(Product)s.get(Product.class, 9);//通过id获取对象
 		p.setCategory(c);
 		s.update(p);
+		
 		
 		s.getTransaction().commit();
 		s.close();

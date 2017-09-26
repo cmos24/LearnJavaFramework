@@ -1,11 +1,20 @@
 package com.how2java.pojo;
 
+import java.util.Set;
+
 public class Product {
 	int id;
 	String name;
 	float price;
-	Category category;
+	Category category;//多对一
+	Set<User> users;//多对多
 	
+	public Set<User> getUsers() {
+		return users;
+	}
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
 	public Category getCategory() {
 		return category;
 	}
@@ -29,5 +38,10 @@ public class Product {
 	}
 	public void setPrice(float price) {
 		this.price = price;
+	}
+	
+	@Override
+	public String toString(){
+		return this.name;
 	}
 }
